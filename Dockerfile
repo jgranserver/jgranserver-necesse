@@ -2,9 +2,10 @@ FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-COPY Server.jar /app/
-COPY server.cfg /app/
+# Copy all server files
+COPY . /app/
 
 EXPOSE 14159
 
-CMD ["java", "-Xmx400m", "-jar", "Server.jar", "-headless", "-world", "MyWorld", "-port", "14159"]
+# Use the same command as the batch file (but with globally available java)
+CMD ["java", "-jar", "Server.jar", "-nogui"]
